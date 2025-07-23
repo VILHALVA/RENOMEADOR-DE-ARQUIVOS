@@ -43,7 +43,7 @@ Adiciona zeros **automaticamente** em qualquer número detectado no **nome ou fi
 
 * Apenas arquivos com **menos dígitos que o necessário** são alterados.
 * Preserva nomes que **já possuem a quantidade correta de dígitos**.
-* Detecta tanto números isolados (`"1.ext"`) quanto sufixos (`"Track 9"`), ou prefixos (`"07 Imagem.png"`).
+* Detecta tanto números isolados (`"1.ext"`) quanto sufixos (`"Track 9"`), ou prefixos (`"07 Imagem.ext"`).
 
 | ANTIGO NOME     | NOVO NOME        |
 | --------------- | ---------------- |
@@ -51,10 +51,10 @@ Adiciona zeros **automaticamente** em qualquer número detectado no **nome ou fi
 | `FAIXA 2.ext`   | `FAIXA 002.ext`  |
 | `FAIXA 10.ext`  | `FAIXA 010.ext`  |
 | `FAIXA 123.ext` | *(inalterado)*   |
-| `7 Imagem.png`  | `007 Imagem.png` |
-| `Video 45.mov`  | `Video 045.mov`  |
-| `001.pdf`       | *(inalterado)*   |
-| `10.txt`        | `010.txt`        |
+| `7 Imagem.ext`  | `007 Imagem.ext` |
+| `Video 45.ext`  | `Video 045.ext`  |
+| `001.ext`       | *(inalterado)*   |
+| `10.ext`        | `010.ext`        |
 
 #### UPPER (NOMES EM `MAIÚSCULAS`):
 Converte todos os nomes de arquivos para letras **maiúsculas**, mantendo espaços.
