@@ -148,7 +148,7 @@ class RenomearArquivos:
         pasta = self.entry_pasta.get().strip()
 
         if not pasta or not os.path.isdir(pasta):
-            messagebox.showerror("Erro", "Por favor, selecione um diretório válido.")
+            messagebox.showerror("Erro", "Por favor, selecione um diretório válido!")
             return
 
         arquivos = [f for f in os.listdir(pasta) if not is_oculto_ou_sistema(os.path.join(pasta, f))]
@@ -156,29 +156,84 @@ class RenomearArquivos:
 
         if modo == "GERAL":
             nome = self.entry_nome.get().strip()
-            padrao = re.match(r"^(.*?)(\d+)$", nome)
             arquivos = self.ordenar_arquivos(arquivos, pasta)
+            nome = self.entry_nome.get().strip()
 
-            if padrao:
-                prefixo = padrao.group(1).strip()
-                numero_inicial = int(padrao.group(2))
-                casas_decimais = len(padrao.group(2))
+            if nome:
+                padrao_completo = re.fullmatch(r"^(\d+)?([)\-_$])$", nome)
+                padrao_somente_numero = re.fullmatch(r"^\d+$", nome)
+                padrao_prefixo_com_numero = re.fullmatch(r"^(.*?)[ _\-]?(\d+)$", nome)  
 
-                for i, arquivo in enumerate(arquivos):
-                    ext = os.path.splitext(arquivo)[1]
-                    numero_atual = str(numero_inicial + i).zfill(casas_decimais)
-                    novo_nome = f"{prefixo} {numero_atual}{ext}" if prefixo else f"{numero_atual}{ext}"
-                    origem = os.path.join(pasta, arquivo)
-                    destino = os.path.join(pasta, novo_nome)
-                    sucesso, erro = self.renomear_com_erro_tratado(origem, destino)
-                    if sucesso:
-                        self.backup_nomes.append((novo_nome, arquivo))
-                    elif erro:
-                        erros.append(erro)
+                if padrao_completo:
+                    numero_inicial = int(padrao_completo.group(1)) if padrao_completo.group(1) else 1
+                    separador = padrao_completo.group(2)
+                    separador_real = " " if separador == "$" else separador
+                    casas_decimais = max(2, len(str(numero_inicial + len(arquivos) - 1)))
+
+                    for i, arquivo in enumerate(arquivos):
+                        ext = os.path.splitext(arquivo)[1]
+                        base_nome = os.path.splitext(arquivo)[0]
+                        numero_atual = str(numero_inicial + i).zfill(casas_decimais)
+                        espaco = " " if separador_real == ")" else ""
+                        novo_nome = f"{numero_atual}{separador_real}{espaco}{base_nome}{ext}"
+
+                        origem = os.path.join(pasta, arquivo)
+                        destino = os.path.join(pasta, novo_nome)
+                        sucesso, erro = self.renomear_com_erro_tratado(origem, destino)
+                        if sucesso:
+                            self.backup_nomes.append((novo_nome, arquivo))
+                        elif erro:
+                            erros.append(erro)
+
+                elif padrao_somente_numero:
+                    numero_inicial = int(nome)
+                    casas_decimais = max(2, len(str(numero_inicial + len(arquivos) - 1)))
+
+                    for i, arquivo in enumerate(arquivos):
+                        ext = os.path.splitext(arquivo)[1]
+                        numero_atual = str(numero_inicial + i).zfill(casas_decimais)
+                        novo_nome = f"{numero_atual}{ext}"
+                        origem = os.path.join(pasta, arquivo)
+                        destino = os.path.join(pasta, novo_nome)
+                        sucesso, erro = self.renomear_com_erro_tratado(origem, destino)
+                        if sucesso:
+                            self.backup_nomes.append((novo_nome, arquivo))
+                        elif erro:
+                            erros.append(erro)
+
+                elif padrao_prefixo_com_numero:
+                    prefixo = padrao_prefixo_com_numero.group(1).strip()
+                    numero_inicial = int(padrao_prefixo_com_numero.group(2))
+                    casas_decimais = max(2, len(str(numero_inicial + len(arquivos) - 1)))
+
+                    for i, arquivo in enumerate(arquivos):
+                        ext = os.path.splitext(arquivo)[1]
+                        numero_atual = str(numero_inicial + i).zfill(casas_decimais)
+                        novo_nome = f"{prefixo} {numero_atual}{ext}" if prefixo else f"{numero_atual}{ext}"
+                        origem = os.path.join(pasta, arquivo)
+                        destino = os.path.join(pasta, novo_nome)
+                        sucesso, erro = self.renomear_com_erro_tratado(origem, destino)
+                        if sucesso:
+                            self.backup_nomes.append((novo_nome, arquivo))
+                        elif erro:
+                            erros.append(erro)
+
+                else:
+                    for count, arquivo in enumerate(arquivos, start=1):
+                        ext = os.path.splitext(arquivo)[1]
+                        novo_nome = f"{nome} {count:02d}{ext}"
+                        origem = os.path.join(pasta, arquivo)
+                        destino = os.path.join(pasta, novo_nome)
+                        sucesso, erro = self.renomear_com_erro_tratado(origem, destino)
+                        if sucesso:
+                            self.backup_nomes.append((novo_nome, arquivo))
+                        elif erro:
+                            erros.append(erro)
+
             else:
                 for count, arquivo in enumerate(arquivos, start=1):
                     ext = os.path.splitext(arquivo)[1]
-                    novo_nome = f"{nome} {count:02d}{ext}" if nome else f"{count:02d}{ext}"
+                    novo_nome = f"{count:02d}{ext}"
                     origem = os.path.join(pasta, arquivo)
                     destino = os.path.join(pasta, novo_nome)
                     sucesso, erro = self.renomear_com_erro_tratado(origem, destino)
@@ -202,32 +257,28 @@ class RenomearArquivos:
                     nome, ext = os.path.splitext(arquivo)
                     novo_nome = None
 
-                    if nome.isdigit():
-                        if len(nome) >= qtd_zeros:
-                            continue
-                        novo_nome = f"{nome.zfill(qtd_zeros)}{ext}"
+                    padrao_numero = re.search(r'(\d+)', nome)
 
-                    elif " " in nome:
-                        prefixo, sufixo = nome.rsplit(" ", 1)
-                        if sufixo.isdigit():
-                            if len(sufixo) >= qtd_zeros:
-                                continue
-                            sufixo = sufixo.zfill(qtd_zeros)
-                            novo_nome = f"{prefixo} {sufixo}{ext}"
+                    if padrao_numero:
+                        numero_antigo = padrao_numero.group(1)
+                        if len(numero_antigo) >= qtd_zeros:
+                            continue  
+                        numero_novo = numero_antigo.zfill(qtd_zeros)
+                        novo_nome = nome[:padrao_numero.start()] + numero_novo + nome[padrao_numero.end():] + ext
 
-                    if novo_nome and novo_nome != arquivo:
-                        destino = os.path.join(pasta, novo_nome)
-                        sucesso, erro = self.renomear_com_erro_tratado(caminho_antigo, destino)
-                        if sucesso:
-                            self.backup_nomes.append((novo_nome, arquivo))
-                            renomeado = True
-                        elif erro:
-                            erros.append(erro)
+                        if novo_nome != arquivo:
+                            destino = os.path.join(pasta, novo_nome)
+                            sucesso, erro = self.renomear_com_erro_tratado(caminho_antigo, destino)
+                            if sucesso:
+                                self.backup_nomes.append((novo_nome, arquivo))
+                                renomeado = True
+                            elif erro:
+                                erros.append(erro)
 
             if erros:
                 messagebox.showerror("Erros durante a renomeação", "\n\n".join(erros))
             elif renomeado:
-                messagebox.showinfo("Sucesso", "Números atualizados com zeros à esquerda!")
+                messagebox.showinfo("Sucesso", "Números atualizados com mais zeros!")
             else:
                 messagebox.showwarning("Aviso", f"Nenhum arquivo foi renomeado. Todos já possuem {qtd_zeros} dígitos ou mais.")
 

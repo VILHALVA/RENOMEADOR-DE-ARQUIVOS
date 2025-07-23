@@ -21,65 +21,40 @@ Ideal para organizar grandes coleções de músicas, documentos, imagens e víde
 ## RECURSOS:
 ### MODO DE RENOMEAÇÃO:
 #### GERAL (NOME UNIVERSAL + NUMERAÇÃO SEQUENCIAL):
-Renomeia todos os arquivos do diretório com um **nome universal opcional** seguido de numeração sequencial (`01`, `02`, etc).
+Renomeia todos os arquivos do diretório com um **nome universal opcional**, seguido de **numeração sequencial** ou **prefixo ajustado**, respeitando o critério de ordenação escolhido (NOME, CRIAÇÃO, MODIFICAÇÃO, etc.).
 
-* A ordem de renomeação respeita o critério de ordenação escolhido (NOME, CRIAÇÃO, MODIFICAÇÃO ou NÚMERO).
-* Para arquivos `.mp3`, a ordenação por **NÚMERO** usa a tag `tracknumber` dos metadados (como exibido no Explorador de Arquivos do Windows).
-* Se o nome universal terminar com número, a numeração sequencial inicia a partir desse número, preservando os zeros à esquerda (ex: `FAIXA 05` → `FAIXA 05`, `FAIXA 06`, ...).
+| NOME UNIVERSAL                   | ANTIGO NOME            | RENOMEADO              |
+| -------------------------------- | --------------------------------- | -------------------------------- |
+| `FAIXA`                          | `Arquivo.ext`                     | `FAIXA 01.ext`, `FAIXA 02.ext`   |
+| *(vazio)*                        | `Arquivo.ext`                     | `01.ext`, `02.ext`               |
+| `05`                             | `musica.mp3`                      | `05.mp3`, `06.mp3`, ...          |
+| `TRACK 05`                       | `song1.mp3`                       | `TRACK 05.mp3`, `TRACK 06.mp3`   |
+| `05-`                            | `SONG.mp3`                        | `05-SONG.mp3`, `06-SONG.mp3`     |
+| `05)`                            | `SONG.mp3`                        | `05) SONG.mp3`, `06) SONG.mp3`   |
+| `05_`                            | `SONG.mp3`                        | `05_SONG.mp3`, `06_SONG.mp3`     |
+| `05$` (`$ = espaço`)             | `SONG.mp3`                        | `05 SONG.mp3`, `06 SONG.mp3`     |
+| `-`                              | `VALOR.mp3`                       | `01-VALOR.mp3`, `02-VALOR.mp3`   |
+| `)`                              | `VALOR.mp3`                       | `01) VALOR.mp3`, `02) VALOR.mp3` |
+| `_`                              | `VALOR.mp3`                       | `01_VALOR.mp3`, `02_VALOR.mp3`   |
+| `$` (`$ = espaço`)               | `VALOR.mp3`                       | `01 VALOR.mp3`, `02 VALOR.mp3`   |
 
-**Exemplos:**
+#### MODO 0 – ADICIONA `ZEROS`:
+Adiciona zeros **automaticamente** em qualquer número detectado no **nome ou final do nome** dos arquivos, conforme a quantidade de dígitos escolhida no controle deslizante (padrão: **3 dígitos**).
 
-* Nome universal preenchido sem número:
+* Apenas arquivos com **menos dígitos que o necessário** são alterados.
+* Preserva nomes que **já possuem a quantidade correta de dígitos**.
+* Detecta tanto números isolados (`"1.mp3"`) quanto sufixos (`"Track 9"`), ou prefixos (`"07 Imagem.png"`).
 
-  ```
-  ARQUIVO 01.pdf, ARQUIVO 02.png, ARQUIVO 03.docx
-  ```
-
-* Nome universal vazio:
-
-  ```
-  01.pdf, 02.png, 03.docx
-  ```
-
-* Arquivos diversos com nome universal:
-
-  ```
-  Imagem1.png, ArquivoB.pdf, Outro.docx
-  → RELATORIO 01.png, RELATORIO 02.pdf, RELATORIO 03.docx
-  ```
-
-* Arquivos `.mp3` com tag `tracknumber` e ordenação "NÚMERO":
-
-  ```
-  Track B.mp3 (Faixa 2), Song A.mp3 (Faixa 1), Music C.mp3 (Faixa 3)
-  → MUSICA 01.mp3, MUSICA 02.mp3, MUSICA 03.mp3
-  ```
-
-* Nome universal com número `05` no final:
-
-  ```
-  FAIXA 05 → FAIXA 05.ext, FAIXA 06.ext, FAIXA 07.ext, ...
-  ```
-
-* Nome universal apenas com número `05`:
-
-  ```
-  05 → 05.ext, 06.ext, 07.ext, ...
-  ```
-
-#### 0 (ADICIONA `0`):
-Detecta automaticamente **números ao final dos nomes dos arquivos** e os **padroniza com zeros à esquerda**, com base na quantidade de dígitos escolhida no controle deslizante. O valor padrão é **3 dígitos**.
-
-Somente os arquivos que tiverem **menos dígitos que o desejado** serão renomeados, evitando modificações desnecessárias.
-
-**Exemplo com 3 dígitos definidos:**
-
-```
-FAIXA 1   → FAIXA 001  
-FAIXA 2   → FAIXA 002  
-FAIXA 10  → FAIXA 010  
-FAIXA 123 → FAIXA 123  (não é alterado, pois já possui 3 dígitos)
-```
+| ANTIGO NOME     | NOVO NOME        |
+| --------------- | ---------------- |
+| `FAIXA 1.mp3`   | `FAIXA 001.mp3`  |
+| `FAIXA 2.mp3`   | `FAIXA 002.mp3`  |
+| `FAIXA 10.mp3`  | `FAIXA 010.mp3`  |
+| `FAIXA 123.mp3` | *(inalterado)*   |
+| `7 Imagem.png`  | `007 Imagem.png` |
+| `Video 45.mov`  | `Video 045.mov`  |
+| `001.pdf`       | *(inalterado)*   |
+| `10.txt`        | `010.txt`        |
 
 #### UPPER (NOMES EM `MAIÚSCULAS`):
 Converte todos os nomes de arquivos para letras **maiúsculas**, mantendo espaços.
@@ -187,13 +162,6 @@ Após abrir a janela chamada **"RENOMEADOR DE ARQUIVOS"**, siga os passos abaixo
 3. Escolha um dos modos disponíveis:
 
    * `GERAL`: Renomeia todos os arquivos com um **nome universal opcional** seguido de numeração sequencial (`01`, `02`, ...).
-     * Se o campo de nome universal estiver vazio, renomeia apenas com os números sequenciais.
-     * Para arquivos `.mp3`, a ordenação usa a tag ID3 `tracknumber` (número da faixa) quando disponível.
-     * Para outros formatos, a ordenação padrão será a escolhida nos botões de ordenação.
-     * Se o nome universal terminar com um número, por exemplo:
-       `FAIXA 05 → FAIXA 05.ext, FAIXA 06.ext, FAIXA 07.ext, ...`
-     * Se o nome universal for apenas um número, por exemplo:
-       `05 → 05.ext, 06.ext, 07.ext, ...`
 
       **Escolha a forma de ordenação dos arquivos antes da renomeação:**
 
@@ -208,7 +176,7 @@ Após abrir a janela chamada **"RENOMEADOR DE ARQUIVOS"**, siga os passos abaixo
         * Quando **ativado (CRESCENTE)**: ordena do menor para o maior (ex: `A → Z`, `1 → 10`, mais antigo → mais novo).
         * Quando **desativado (DESCRESCENTE)**: faz o contrário (ex: `Z → A`, `10 → 1`, mais novo → mais antigo).
 
-   * `0`: Ajusta os números localizados no final do nome dos arquivos, **adicionando zeros à esquerda** conforme a quantidade definida no **controle deslizante (slider de dígitos)**. O valor padrão é **3 dígitos**. Apenas arquivos com **menos dígitos do que o especificado** serão renomeados — os demais permanecem inalterados.
+   * `0`: Ajusta os números localizados no inicio ou no final do nome dos arquivos, **adicionando zeros** conforme a quantidade definida no **controle deslizante (slider de dígitos)**. O valor padrão é **3 dígitos**. Apenas arquivos com **menos dígitos do que o especificado** serão renomeados — os demais permanecem inalterados.
 
    * `UPPER`: Converte todos os nomes para letras **maiúsculas**.
 
