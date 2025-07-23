@@ -23,20 +23,20 @@ Ideal para organizar grandes coleções de músicas, documentos, imagens e víde
 #### GERAL (NOME UNIVERSAL + NUMERAÇÃO SEQUENCIAL):
 Renomeia todos os arquivos do diretório com um **nome universal opcional**, seguido de **numeração sequencial** ou **prefixo ajustado**, respeitando o critério de ordenação escolhido (NOME, CRIAÇÃO, MODIFICAÇÃO, etc.).
 
-| NOME UNIVERSAL       | ANTIGO NOME   | RENOMEADO                        | EXPLICAÇÃO                                                         |
-| -------------------- | ------------- | -------------------------------- | ------------------------------------------------------------------ |
-| `FAIXA`              | `Arquivo.ext` | `FAIXA 01.ext`, `FAIXA 02.ext`   | Nome comum + numeração com zeros.                                  |
-| *(vazio)*            | `Arquivo.ext` | `01.ext`, `02.ext`               | Apenas numeração sequencial.                                       |
-| `05`                 | `musica.ext`  | `05.ext`, `06.ext`, ...          | Começa do número `05`, sem separador ou nome.                      |
-| `TRACK 05`           | `song1.ext`   | `TRACK 05.ext`, `TRACK 06.ext`   | Usa nome base com número inicial detectado (TRACK 05 → 06, 07...). |
-| `05-`                | `SONG.ext`    | `05-SONG.ext`, `06-SONG.ext`     | Numeração com hífen. Começa do `05`.                               |
-| `05)`                | `SONG.ext`    | `05) SONG.ext`, `06) SONG.ext`   | Numeração com parêntese e espaço.                                  |
-| `05_`                | `SONG.ext`    | `05_SONG.ext`, `06_SONG.ext`     | Numeração com underline `_`.                                       |
-| `05$` | `SONG.ext`    | `05 SONG.ext`, `06 SONG.ext`     | Numeração com espaço como separador.                               |
-| `-`                  | `VALOR.ext`   | `01-VALOR.ext`, `02-VALOR.ext`   | Começa do `01`, usa hífen entre número e nome.                     |
-| `)`                  | `VALOR.ext`   | `01) VALOR.ext`, `02) VALOR.ext` | Começa do `01`, separador `)` com espaço.                          |
-| `_`                  | `VALOR.ext`   | `01_VALOR.ext`, `02_VALOR.ext`   | Usa underline entre número e nome.                                 |
-| `$`   | `VALOR.ext`   | `01 VALOR.ext`, `02 VALOR.ext`   | Usa apenas espaço entre número e nome.                             |
+| NOME UNIVERSAL | ANTIGO NOME   | RENOMEADO                      | EXPLICAÇÃO                                                         |
+| -------------- | ------------- | ------------------------------ | ------------------------------------------------------------------ |
+| *(vazio)*      | `Arquivo.ext` | `01.ext`, `02.ext`             | Apenas numeração sequencial, sem prefixo.                          |
+| `05`           | `musica.ext`  | `05.ext`, `06.ext`, ...        | Começa do número `05`, sem separador ou nome.                      |
+| `FAIXA`        | `Arquivo.ext` | `FAIXA 01.ext`, `FAIXA 02.ext` | Nome comum + numeração com zeros.                                  |
+| `TRACK 05`     | `song1.ext`   | `TRACK 05.ext`, `TRACK 06.ext` | Usa nome base com número inicial detectado (TRACK 05 → 06, 07...). |
+| - | VALOR.ext | 01-VALOR.ext, 02-VALOR.ext | Começa do 01, usa hífen entre número e nome. |
+| 05- | SONG.ext | 05-SONG.ext, 06-SONG.ext | Começa do 05, usa hífen entre número e nome. |
+| ) | VALOR.ext | 01) VALOR.ext, 02) VALOR.ext| Começa do 01, usa ) com espaço. |
+| 05) | SONG.ext | 05) SONG.ext, 06) SONG.ext | Começa do 05, usa ) com espaço. |
+| _ | VALOR.ext | 01_VALOR.ext, 02_VALOR.ext | Usa underline _ entre número e nome. |
+| 05_ | SONG.ext | 05_SONG.ext, 06_SONG.ext | Usa underline _ após número iniciado em 05. |
+| $  | VALOR.ext | 01 VALOR.ext, 02 VALOR.ext | Usa espaço entre número e nome. |
+| 05$ | SONG.ext | 05 SONG.ext, 06 SONG.ext | Começa do 05, separando com espaço ao invés de símbolo. |
 
 #### MODO 0 – ADICIONA `ZEROS`:
 Adiciona zeros **automaticamente** em qualquer número detectado no **nome ou final do nome** dos arquivos, conforme a quantidade de dígitos escolhida no controle deslizante (padrão: **3 dígitos**).
