@@ -27,30 +27,30 @@ Renomeia todos os arquivos do diretório com um **nome universal opcional**, seg
 | -------------------------------- | --------------------------------- | -------------------------------- |
 | `FAIXA`                          | `Arquivo.ext`                     | `FAIXA 01.ext`, `FAIXA 02.ext`   |
 | *(vazio)*                        | `Arquivo.ext`                     | `01.ext`, `02.ext`               |
-| `05`                             | `musica.mp3`                      | `05.mp3`, `06.mp3`, ...          |
-| `TRACK 05`                       | `song1.mp3`                       | `TRACK 05.mp3`, `TRACK 06.mp3`   |
-| `05-`                            | `SONG.mp3`                        | `05-SONG.mp3`, `06-SONG.mp3`     |
-| `05)`                            | `SONG.mp3`                        | `05) SONG.mp3`, `06) SONG.mp3`   |
-| `05_`                            | `SONG.mp3`                        | `05_SONG.mp3`, `06_SONG.mp3`     |
-| `05$` (`$ = espaço`)             | `SONG.mp3`                        | `05 SONG.mp3`, `06 SONG.mp3`     |
-| `-`                              | `VALOR.mp3`                       | `01-VALOR.mp3`, `02-VALOR.mp3`   |
-| `)`                              | `VALOR.mp3`                       | `01) VALOR.mp3`, `02) VALOR.mp3` |
-| `_`                              | `VALOR.mp3`                       | `01_VALOR.mp3`, `02_VALOR.mp3`   |
-| `$` (`$ = espaço`)               | `VALOR.mp3`                       | `01 VALOR.mp3`, `02 VALOR.mp3`   |
+| `05`                             | `musica.ext`                      | `05.ext`, `06.ext`, ...          |
+| `TRACK 05`                       | `song1.ext`                       | `TRACK 05.ext`, `TRACK 06.ext`   |
+| `05-`                            | `SONG.ext`                        | `05-SONG.ext`, `06-SONG.ext`     |
+| `05)`                            | `SONG.ext`                        | `05) SONG.ext`, `06) SONG.ext`   |
+| `05_`                            | `SONG.ext`                        | `05_SONG.ext`, `06_SONG.ext`     |
+| `05$` (`$ = espaço`)             | `SONG.ext`                        | `05 SONG.ext`, `06 SONG.ext`     |
+| `-`                              | `VALOR.ext`                       | `01-VALOR.ext`, `02-VALOR.ext`   |
+| `)`                              | `VALOR.ext`                       | `01) VALOR.ext`, `02) VALOR.ext` |
+| `_`                              | `VALOR.ext`                       | `01_VALOR.ext`, `02_VALOR.ext`   |
+| `$` (`$ = espaço`)               | `VALOR.ext`                       | `01 VALOR.ext`, `02 VALOR.ext`   |
 
 #### MODO 0 – ADICIONA `ZEROS`:
 Adiciona zeros **automaticamente** em qualquer número detectado no **nome ou final do nome** dos arquivos, conforme a quantidade de dígitos escolhida no controle deslizante (padrão: **3 dígitos**).
 
 * Apenas arquivos com **menos dígitos que o necessário** são alterados.
 * Preserva nomes que **já possuem a quantidade correta de dígitos**.
-* Detecta tanto números isolados (`"1.mp3"`) quanto sufixos (`"Track 9"`), ou prefixos (`"07 Imagem.png"`).
+* Detecta tanto números isolados (`"1.ext"`) quanto sufixos (`"Track 9"`), ou prefixos (`"07 Imagem.png"`).
 
 | ANTIGO NOME     | NOVO NOME        |
 | --------------- | ---------------- |
-| `FAIXA 1.mp3`   | `FAIXA 001.mp3`  |
-| `FAIXA 2.mp3`   | `FAIXA 002.mp3`  |
-| `FAIXA 10.mp3`  | `FAIXA 010.mp3`  |
-| `FAIXA 123.mp3` | *(inalterado)*   |
+| `FAIXA 1.ext`   | `FAIXA 001.ext`  |
+| `FAIXA 2.ext`   | `FAIXA 002.ext`  |
+| `FAIXA 10.ext`  | `FAIXA 010.ext`  |
+| `FAIXA 123.ext` | *(inalterado)*   |
 | `7 Imagem.png`  | `007 Imagem.png` |
 | `Video 45.mov`  | `Video 045.mov`  |
 | `001.pdf`       | *(inalterado)*   |
@@ -93,14 +93,14 @@ documento importante.txt → Documento importante.txt
 
 #### TÍTULO:
 * **Ordenar por TÍTULO:**
-  - Ordena os arquivos com base no campo **Title** presente nas **metatags ID3** de arquivos `.mp3`.
+  - Ordena os arquivos com base no campo **Title** presente nas **metatags ID3** de arquivos `.ext`.
   - É útil quando os arquivos de áudio possuem títulos corretos definidos nas propriedades do arquivo.
   - A ordenação é feita em ordem alfabética dos títulos (ignorando maiúsculas/minúsculas).
   - Requer que os arquivos tenham metadados válidos; arquivos sem título serão considerados com valor vazio `("")` e geralmente colocados no final ou início da lista, dependendo da ordem selecionada (crescente ou decrescente).
 
 #### NÚMERO:
 * **Ordenar por NÚMERO:**
-  - Ordena os arquivos com base no **número da faixa** obtido dos metadados, por exemplo, da tag `tracknumber` em arquivos `.mp3`.
+  - Ordena os arquivos com base no **número da faixa** obtido dos metadados, por exemplo, da tag `tracknumber` em arquivos `.ext`.
   - Para outros arquivos que não têm essa informação, usa uma ordenação alfabética simples.
   - Essa ordenação é útil para organizar faixas de música ou arquivos numerados conforme o número embutido nos metadados.
 
@@ -166,8 +166,8 @@ Após abrir a janela chamada **"RENOMEADOR DE ARQUIVOS"**, siga os passos abaixo
       **Escolha a forma de ordenação dos arquivos antes da renomeação:**
 
         * `NOME`: Ordenação alfabética com base no nome atual do arquivo (renomeado manualmente).
-        * `TÍTULO`: Ordenação com base no campo de **metadados "TÍTULO"** dos arquivos (comum em músicas `.mp3`).
-        * `NÚMERO`: Ordena pelos **números das faixas** extraídos dos metadados dos arquivos `.mp3`.
+        * `TÍTULO`: Ordenação com base no campo de **metadados "TÍTULO"** dos arquivos (comum em músicas `.ext`).
+        * `NÚMERO`: Ordena pelos **números das faixas** extraídos dos metadados dos arquivos `.ext`.
         * `CRIAÇÃO`: Ordena pela **data de criação** dos arquivos.
         * `MODIFICAÇÃO`: Ordena pela **data da última modificação** dos arquivos.
 
