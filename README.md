@@ -23,7 +23,7 @@ Ideal para organizar grandes coleções de músicas, documentos, imagens e víde
 #### GERAL (NOME UNIVERSAL + NUMERAÇÃO SEQUENCIAL):
 Renomeia todos os arquivos do diretório com um **nome universal opcional**, seguido de **numeração sequencial** ou **prefixo ajustado**, respeitando o critério de ordenação escolhido (NOME, CRIAÇÃO, MODIFICAÇÃO, etc.).
 
-| NOME UNIVERSAL | ANTIGO NOME   | RENOMEADO                      | EXPLICAÇÃO                                                         |
+| NOME UNIVERSAL | ANTIGO NOME   | ARQUIVOS RENOMEADOS   | EXPLICAÇÃO                                               |
 | -------------- | ------------- | ------------------------------ | ------------------------------------------------------------------ |
 | *(vazio)*      | `Arquivo.ext` | `01.ext`, `02.ext`             | Apenas numeração sequencial, sem prefixo.                          |
 | `05`           | `musica.ext`  | `05.ext`, `06.ext`, ...        | Começa do número `05`, sem separador ou nome.                      |
