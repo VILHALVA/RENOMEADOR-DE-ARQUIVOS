@@ -1,5 +1,10 @@
 # [ATUALIZAÇÕES:](./UPDATES.md#vers%C3%A3o-10---06122023)
 
+## VERSÃO 1.6 - 24/07/2025
+* ✅**Novo botão AJUDA:** Adicionado ao lado do botão **SELECIONAR**, este botão abre automaticamente o navegador padrão e direciona o usuário para a documentação oficial do modo de renomeação atualmente selecionado. Isso permite esclarecer dúvidas de forma rápida e consultar exemplos práticos sobre o funcionamento de cada modo. É necessário estar conectado à internet, pois os links levam ao `README.md` do repositório no GitHub.
+* ✅**Melhoria no layout dos botões:** Os botões **RENOMEAR** e **RESETAR** agora aparecem lado a lado.
+---
+
 ## VERSÃO 1.5 - 23/07/2025
 * ✅**MODO GERAL:** Agora o Modo `GERAL` **modifica corretamente tanto os prefixos quanto os sufixos dos nomes**.
 Ou seja, ele entende quando o nome universal é um número com um separador (como `05-`, `05)`, etc) e usa isso como base para numerar os arquivos dinamicamente. Exemplos:

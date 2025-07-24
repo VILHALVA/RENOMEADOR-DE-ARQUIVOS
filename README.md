@@ -16,6 +16,7 @@ Ideal para organizar grandes coleções de músicas, documentos, imagens e víde
 * Vários critérios de ordenação antes da renomeação: por nome, título (metadado), número da faixa em MP3, data de criação ou modificação.
 * Controle da ordem crescente ou decrescente via botão intuitivo.
 * Ignora automaticamente arquivos ocultos e de sistema.
+* Botão **AJUDA** para acessar diretamente a documentação do modo de renomeação selecionado, facilitando o entendimento e uso correto de cada funcionalidade. É necessário estar conectado à internet, pois os links levam ao `README.md` do repositório no GitHub.
 * Botão **RESETAR** para restaurar os nomes originais dos arquivos, garantindo segurança e reversibilidade no processo.
 
 ## RECURSOS:
@@ -156,8 +157,7 @@ Após abrir a janela chamada **"RENOMEADOR DE ARQUIVOS"**, siga os passos abaixo
 
 1. Clique em **"SELECIONAR"** para escolher a pasta onde estão os arquivos que deseja renomear.
 
-2. No campo **"NOME UNIVERSAL"**, digite o nome base que será usado para renomear os arquivos (exemplo: `ARQUIVO`, `DOCUMENTO`, `MUSICA`, etc.).
-   *Este campo é utilizado apenas no modo GERAL.*
+2. (Opcional) Utilize o botão **"AJUDA"** para acessar instruções detalhadas sobre o modo de renomeação selecionado. É necessário estar conectado à internet, pois os links levam ao `README.md` do repositório no GitHub.
 
 3. Escolha um dos modos disponíveis:
 
@@ -176,6 +176,8 @@ Após abrir a janela chamada **"RENOMEADOR DE ARQUIVOS"**, siga os passos abaixo
         * Quando **ativado (CRESCENTE)**: ordena do menor para o maior (ex: `A → Z`, `1 → 10`, mais antigo → mais novo).
         * Quando **desativado (DESCRESCENTE)**: faz o contrário (ex: `Z → A`, `10 → 1`, mais novo → mais antigo).
 
+      * No campo **"NOME UNIVERSAL"**, digite o nome base que será usado para renomear os arquivos (exemplo: `ARQUIVO`, `DOCUMENTO`, `MUSICA`, etc.).
+
    * `0`: Ajusta os números localizados no inicio ou no final do nome dos arquivos, **adicionando zeros** conforme a quantidade definida no **controle deslizante (slider de dígitos)**. O valor padrão é **3 dígitos**. Apenas arquivos com **menos dígitos do que o especificado** serão renomeados — os demais permanecem inalterados.
 
    * `UPPER`: Converte todos os nomes para letras **maiúsculas**.
@@ -184,11 +186,11 @@ Após abrir a janela chamada **"RENOMEADOR DE ARQUIVOS"**, siga os passos abaixo
 
    * `MISTO`: Deixa **apenas a primeira letra maiúscula** de cada nome, mantendo o restante dos caracteres inalterado.
 
-5. Clique em **"RENOMEAR"** para iniciar o processo.
+4. Clique em **"RENOMEAR"** para iniciar o processo.
 
-6. Após a renomeação, será exibida a mensagem de `Sucesso`.
+5. Após a renomeação, será exibida a mensagem de `Sucesso`.
 
-7. (Opcional) Clique em **"RESETAR"** para desfazer a última renomeação e restaurar os nomes originais dos arquivos.
+6. (Opcional) Clique em **"RESETAR"** para desfazer a última renomeação e restaurar os nomes originais dos arquivos. 
 
 ## SOBRE O EXECUTAVEL E O INSTALADOR:
 ### 1. EXECUTANDO O INSTALADOR:

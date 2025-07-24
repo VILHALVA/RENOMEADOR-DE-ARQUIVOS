@@ -2,6 +2,7 @@ import customtkinter as ctk
 from tkinter import filedialog, messagebox
 import os
 import re
+import webbrowser
 import ctypes
 import traceback
 from mutagen.easyid3 import EasyID3
@@ -30,8 +31,13 @@ class RenomearArquivos:
         
         self.entry_pasta = ctk.CTkEntry(root, width=600, placeholder_text="SELECIONE O DIRETÓRIO")
         self.entry_pasta.pack(pady=10)
-        self.btn_pasta = ctk.CTkButton(root, text="SELECIONAR", command=self.selecionar_pasta)
-        self.btn_pasta.pack(pady=10)
+        
+        self.frame_selecao = ctk.CTkFrame(root, fg_color="transparent")
+        self.frame_selecao.pack(pady=10)
+        self.btn_pasta = ctk.CTkButton(self.frame_selecao, text="SELECIONAR", command=self.selecionar_pasta)
+        self.btn_pasta.pack(side=ctk.LEFT, padx=10)
+        self.btn_ajuda = ctk.CTkButton(self.frame_selecao, text="AJUDA", command=self.abrir_ajuda)
+        self.btn_ajuda.pack(side=ctk.LEFT, padx=10)
 
         self.frame_radios = ctk.CTkFrame(root)
         self.frame_radios.pack(pady=10)
@@ -80,11 +86,14 @@ class RenomearArquivos:
         )
         self.slider_zeros.pack(padx=20)
 
-        self.btn_renomear = ctk.CTkButton(root, text="RENOMEAR", command=self.executar_renomeacao)
-        self.btn_renomear.pack(pady=10)
+        self.frame_botoes = ctk.CTkFrame(root, fg_color="transparent")
+        self.frame_botoes.pack(pady=10)
 
-        self.btn_resetar = ctk.CTkButton(root, text="RESETAR", command=self.resetar_nomes)
-        self.btn_resetar.pack(pady=0)
+        self.btn_renomear = ctk.CTkButton(self.frame_botoes, text="RENOMEAR", command=self.executar_renomeacao)
+        self.btn_renomear.pack(side=ctk.LEFT, padx=10)
+
+        self.btn_resetar = ctk.CTkButton(self.frame_botoes, text="RESETAR", command=self.resetar_nomes)
+        self.btn_resetar.pack(side=ctk.LEFT, padx=10)
 
         self.footer = ctk.CTkLabel(root, text="APP CRIADO PELO VILHALVA\nGITHUB: @VILHALVA", fg_color="gray", height=40)
         self.footer.pack(side=ctk.BOTTOM, fill=ctk.X)
@@ -106,6 +115,21 @@ class RenomearArquivos:
         if pasta:
             self.entry_pasta.delete(0, ctk.END)
             self.entry_pasta.insert(0, pasta)
+
+    def abrir_ajuda(self):
+        modo = self.var_modo.get()
+        urls = {
+            "GERAL": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#geral-nome-universal--numera%C3%A7%C3%A3o-sequencial",
+            "0": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#modo-0--adiciona-zeros",
+            "UPPER": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#upper-nomes-em-mai%C3%BAsculas",
+            "LOWER": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#lower-nomes-em-min%C3%BAsculas",
+            "MISTO": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#misto-primeiras-letras-em-mai%C3%BAsculas"
+        }
+        url = urls.get(modo)
+        if url:
+            webbrowser.open(url)
+        else:
+            messagebox.showerror("Erro", f"Modo '{modo}' não possui link de ajuda!")
 
     def obter_faixa(self, mp3_path):
         try:
@@ -368,17 +392,19 @@ class RenomearArquivos:
 
     def atualizar_visibilidade_componentes(self):
         modo = self.var_modo.get()
+
+        # Esconde todos os componentes antes de exibir os corretos
         self.frame_nome.pack_forget()
         self.frame_ordem.pack_forget()
         self.frame_switch.pack_forget()
         self.frame_zeros.pack_forget()
 
         if modo == "GERAL":
-            self.frame_ordem.pack(pady=5, before=self.btn_renomear)
-            self.frame_switch.pack(pady=5, before=self.btn_renomear)
-            self.frame_nome.pack(pady=10, before=self.btn_renomear)
+            self.frame_ordem.pack(pady=5, before=self.frame_botoes)
+            self.frame_switch.pack(pady=5, before=self.frame_botoes)
+            self.frame_nome.pack(pady=10, before=self.frame_botoes)
         elif modo == "0":
-            self.frame_zeros.pack(pady=10, before=self.btn_renomear)
+            self.frame_zeros.pack(pady=10, before=self.frame_botoes)
             self.atualizar_label_zeros(self.var_zeros.get())
 
 def is_oculto_ou_sistema(path):
