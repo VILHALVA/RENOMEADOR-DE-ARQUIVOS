@@ -393,7 +393,6 @@ class RenomearArquivos:
     def atualizar_visibilidade_componentes(self):
         modo = self.var_modo.get()
 
-        # Esconde todos os componentes antes de exibir os corretos
         self.frame_nome.pack_forget()
         self.frame_ordem.pack_forget()
         self.frame_switch.pack_forget()
