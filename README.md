@@ -29,21 +29,21 @@ Renomeia todos os arquivos do diretório com um **nome universal opcional**, seg
 | `05`           | `musica.ext`  | `05.ext`, `06.ext`, ...        | Começa do número `05`, sem separador ou nome.                      |
 | `FAIXA`        | `Arquivo.ext` | `FAIXA 01.ext`, `FAIXA 02.ext` | Nome comum + numeração com zeros.                                  |
 | `FAIXA 05`     | `song1.ext`   | `FAIXA 05.ext`, `FAIXA 06.ext` | Usa nome base com número inicial detectado. |
-| - | VALOR.ext | 01-VALOR.ext, 02-VALOR.ext | Começa do 01, usa hífen entre número e nome. |
-| 05- | SONG.ext | 05-SONG.ext, 06-SONG.ext | Começa do 05, usa hífen entre número e nome. |
-| ) | VALOR.ext | 01) VALOR.ext, 02) VALOR.ext| Começa do 01, usa ) com espaço. |
-| 05) | SONG.ext | 05) SONG.ext, 06) SONG.ext | Começa do 05, usa ) com espaço. |
-| _ | VALOR.ext | 01_VALOR.ext, 02_VALOR.ext | Usa underline _ entre número e nome. |
-| 05_ | SONG.ext | 05_SONG.ext, 06_SONG.ext | Usa underline _ após número iniciado em 05. |
-| $  | VALOR.ext | 01 VALOR.ext, 02 VALOR.ext | Usa espaço entre número e nome. |
-| 05$ | SONG.ext | 05 SONG.ext, 06 SONG.ext | Começa do 05, separando com espaço ao invés de símbolo. |
+| - | `VALOR.ext` | `01-VALOR.ext`, `02-VALOR.ext` | Começa do `01`, usa hífen entre número e nome. |
+| `05-` | `SONG.ext` | `05-SONG.ext`, `06-SONG.ext` | Começa do `05`, usa hífen entre número e nome. |
+| ) | `VALOR.ext` | `01) VALOR.ext`, `02) VALOR.ext` | Começa do `01`, usa `)` com espaço. |
+| `05)` | `SONG.ext` | `05) SONG.ext`, `06) SONG.ext` | Começa do `05`, usa `)` com espaço. |
+| `_` | `VALOR.ext` | `01_VALOR.ext`, `02_VALOR.ext` | Usa underline `_` entre número e nome. |
+| `05_` | `SONG.ext` | `05_SONG.ext`, `06_SONG.ext` | Usa underline `_` após número iniciado em `05`. |
+| `$`  | `VALOR.ext` | `01 VALOR.ext`, `02 VALOR.ext` | Usa espaço entre número e nome. |
+| `05$` | `SONG.ext` | `05 SONG.ext`, `06 SONG.ext` | Começa do `05`, separando com espaço ao invés de símbolo. |
 
 #### MODO 0 – ADICIONA `ZEROS`:
-Adiciona zeros **automaticamente** em qualquer número detectado no **nome ou final do nome** dos arquivos, conforme a quantidade de dígitos escolhida no controle deslizante (padrão: **3 dígitos**).
-
+* Adiciona zeros **automaticamente** em qualquer número detectado no **nome ou final do nome** dos arquivos, conforme a quantidade de dígitos escolhida no controle deslizante (padrão: **3 dígitos**).
 * Apenas arquivos com **menos dígitos que o necessário** são alterados.
 * Preserva nomes que **já possuem a quantidade correta de dígitos**.
 * Detecta tanto números isolados (`"1.ext"`) quanto sufixos (`"Track 9"`), ou prefixos (`"07 Imagem.ext"`).
+* Exemplo com **formatação para 3 dígitos**, conforme selecionado no controle deslizante:
 
 | ANTIGO NOME     | NOVO NOME        |
 | --------------- | ---------------- |
@@ -161,7 +161,7 @@ Após abrir a janela chamada **"RENOMEADOR DE ARQUIVOS"**, siga os passos abaixo
 
 3. Escolha um dos modos disponíveis:
 
-   * `GERAL`: Renomeia todos os arquivos com um **nome universal opcional** seguido de numeração sequencial (`01`, `02`, ...).
+   * `GERAL`: Renomeia todos os arquivos de um diretório usando um **nome base opcional** combinado com **numeração sequencial** ou **prefixo ajustado**, de acordo com o critério de ordenação escolhido (como nome, data de criação ou modificação). O usuário pode deixar o nome universal em branco para aplicar apenas a numeração (`01.ext`, `02.ext`), iniciar a contagem a partir de um número específico (`05.ext`), ou ainda incluir nomes personalizados com separadores como espaço, hífen, parêntese ou underline (ex: `FAIXA 01.ext`, `01-VALOR.ext`, `05) SONG.ext`). O sistema detecta e utiliza automaticamente o formato apropriado conforme o padrão fornecido.
 
       **Escolha a forma de ordenação dos arquivos antes da renomeação:**
 

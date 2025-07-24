@@ -4,7 +4,7 @@
 * ✅**MODO GERAL:** Agora o Modo `GERAL` **modifica corretamente tanto os prefixos quanto os sufixos dos nomes**.
 Ou seja, ele entende quando o nome universal é um número com um separador (como `05-`, `05)`, etc) e usa isso como base para numerar os arquivos dinamicamente. Exemplos:
 
-| Entrada no campo "Nome Universal" | Resultado esperado      |
+| NOME UNIVERSAL | ARQUIVOS RENOMEADOS      |
 | --------------------------------- | ----------------------- |
 | `-`                               | `01-SONG`, `02-VALOR`   |
 | `05-`                             | `05-SONG`, `06-VALOR`   |
