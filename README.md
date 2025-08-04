@@ -23,7 +23,7 @@ Ideal para organizar grandes coleções de músicas, documentos, imagens e víde
 ### MODO DE RENOMEAÇÃO:
 #### GERAL (NOME UNIVERSAL + NUMERAÇÃO SEQUENCIAL):
 * Renomeia todos os arquivos do diretório com um **nome universal opcional**, seguido de **numeração sequencial** ou **prefixo ajustado**, respeitando o critério de ordenação escolhido (NOME, CRIAÇÃO, MODIFICAÇÃO, etc.).
-* Exemplo com dois arquivos nomeados como **ARQUIVO.ext** e **MIDIA.ext**:
+* Exemplo com dois arquivos nomeados como `ARQUIVO.ext` e `MIDIA.ext`:
 
 | NOME UNIVERSAL | ARQUIVOS RENOMEADOS              | EXPLICAÇÃO                                                  |
 |----------------|----------------------------------|-------------------------------------------------------------|
