@@ -40,23 +40,25 @@ Ideal para organizar grandes coleções de músicas, documentos, imagens e víde
 | `$`            | `01 ARQUIVO.ext`, `02 MIDIA.ext`   | Usa espaço entre número e nome.                             |
 | `05$`          | `05 ARQUIVO.ext`, `06 MIDIA.ext`     | Começa do `05`, separando com espaço ao invés de símbolo.   |
 
-#### MODO 0 – ADICIONA `ZEROS`:
-* Adiciona zeros **automaticamente** em qualquer número detectado no **nome ou final do nome** dos arquivos, conforme a quantidade de dígitos escolhida no controle deslizante (padrão: **3 dígitos**).
-* Apenas arquivos com **menos dígitos que o necessário** são alterados.
-* Preserva nomes que **já possuem a quantidade correta de dígitos**.
-* Detecta tanto números isolados (`"1.ext"`) quanto sufixos (`"Track 9"`), ou prefixos (`"07 Imagem.ext"`).
+#### MODO 0 – ADICIONA OU REMOVE `ZEROS`:
+* Adiciona ou remove zeros **automaticamente** em qualquer número detectado no **nome ou final do nome** dos arquivos, garantindo que cada número tenha a quantidade mínima de dígitos definida pelo controle deslizante (padrão: **3 dígitos**).
+* Apenas arquivos com **números que não correspondem à quantidade definida de dígitos** são alterados.
+* Preserva nomes que **já possuem exatamente a quantidade de dígitos necessária**.
+* Detecta números em qualquer posição: isolados (`"1.ext"`), sufixos (`"Track 9"`), ou prefixos (`"07 Imagem.ext"`).
 * Exemplo com **formatação para 3 dígitos**, conforme selecionado no controle deslizante:
 
-| ANTIGO NOME     | NOVO NOME        |
-| --------------- | ---------------- |
-| `FAIXA 1.ext`   | `FAIXA 001.ext`  |
-| `FAIXA 2.ext`   | `FAIXA 002.ext`  |
-| `FAIXA 10.ext`  | `FAIXA 010.ext`  |
-| `FAIXA 123.ext` | *(inalterado)*   |
-| `7 Imagem.ext`  | `007 Imagem.ext` |
-| `Video 45.ext`  | `Video 045.ext`  |
-| `001.ext`       | *(inalterado)*   |
-| `10.ext`        | `010.ext`        |
+| ANTIGO NOME     | NOVO NOME         |
+| --------------- | ----------------- |
+| `FAIXA 1.ext`   | `FAIXA 001.ext`   |
+| `FAIXA 2.ext`   | `FAIXA 002.ext`   |
+| `FAIXA 10.ext`  | `FAIXA 010.ext`   |
+| `FAIXA 123.ext` | `FAIXA 123.ext`   |
+| `7 Imagem.ext`  | `007 Imagem.ext`  |
+| `Video 45.ext`  | `Video 045.ext`   |
+| `001.ext`       | `1.ext`           |
+| `10.ext`        | `010.ext`         |
+| `0005.ext`      | `5.ext`           |
+| `000123.ext`    | `123.ext`         |
 
 #### UPPER (NOMES EM `MAIÚSCULAS`):
 * Converte todos os nomes de arquivos para letras **maiúsculas**, mantendo espaços.
@@ -179,7 +181,7 @@ Após abrir a janela chamada **"RENOMEADOR DE ARQUIVOS"**, siga os passos abaixo
 
       * No campo **"NOME UNIVERSAL"**, digite o nome base que será usado para renomear os arquivos (exemplo: `ARQUIVO`, `DOCUMENTO`, `MUSICA`, etc.).
 
-   * `0`: Ajusta os números localizados no inicio ou no final do nome dos arquivos, **adicionando zeros** conforme a quantidade definida no **controle deslizante (slider de dígitos)**. O valor padrão é **3 dígitos**. Apenas arquivos com **menos dígitos do que o especificado** serão renomeados — os demais permanecem inalterados.
+   * `0`: Ajusta os números localizados no **início ou no final** do nome dos arquivos, **adicionando ou removendo zeros** conforme a quantidade definida no **controle deslizante (slider de dígitos)**. O valor padrão é **3 dígitos**. Apenas arquivos com **quantidade de dígitos diferente da especificada** serão renomeados — os demais permanecem inalterados.
 
    * `UPPER`: Converte todos os nomes para letras **maiúsculas**.
 

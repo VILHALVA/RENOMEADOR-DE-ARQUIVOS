@@ -275,19 +275,16 @@ class RenomearArquivos:
             qtd_zeros = self.var_zeros.get()
             renomeado = False
 
-            for i, arquivo in enumerate(arquivos, start=1):
+            for arquivo in arquivos:
                 caminho_antigo = os.path.join(pasta, arquivo)
                 if os.path.isfile(caminho_antigo):
                     nome, ext = os.path.splitext(arquivo)
-                    novo_nome = None
-
                     padrao_numero = re.search(r'(\d+)', nome)
 
                     if padrao_numero:
                         numero_antigo = padrao_numero.group(1)
-                        if len(numero_antigo) >= qtd_zeros:
-                            continue  
-                        numero_novo = numero_antigo.zfill(qtd_zeros)
+                        numero_int = int(numero_antigo)
+                        numero_novo = str(numero_int).zfill(qtd_zeros)  
                         novo_nome = nome[:padrao_numero.start()] + numero_novo + nome[padrao_numero.end():] + ext
 
                         if novo_nome != arquivo:
@@ -302,9 +299,9 @@ class RenomearArquivos:
             if erros:
                 messagebox.showerror("Erros durante a renomeação", "\n\n".join(erros))
             elif renomeado:
-                messagebox.showinfo("Sucesso", "Números atualizados com mais zeros!")
+                messagebox.showinfo("Sucesso", "Números atualizados, zeros ajustados!")
             else:
-                messagebox.showwarning("Aviso", f"Nenhum arquivo foi renomeado. Todos já possuem {qtd_zeros} dígitos ou mais.")
+                messagebox.showwarning("Aviso", f"Nenhum arquivo foi renomeado. Todos já possuem pelo menos {qtd_zeros} dígitos.")
 
         elif modo == "UPPER":
             for arquivo in arquivos:

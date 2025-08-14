@@ -1,5 +1,9 @@
 # [ATUALIZAÇÕES:](./UPDATES.md#vers%C3%A3o-10---06122023)
 
+## VERSÃO 1.7 - 14/08/2025
+* ✅ **MODO 0:** Agora não só **adiciona zeros**, mas também **remove zeros**, transformando, por exemplo, `"01"` em `"1"` e `"002"` em `"2"`, sempre respeitando a quantidade mínima de dígitos definida pelo slider (`self.var_zeros`).
+---
+
 ## VERSÃO 1.6 - 24/07/2025
 * ✅**Novo botão AJUDA:** Adicionado ao lado do botão **SELECIONAR**, este botão abre automaticamente o navegador padrão e direciona o usuário para a documentação oficial do modo de renomeação atualmente selecionado. Isso permite esclarecer dúvidas de forma rápida e consultar exemplos práticos sobre o funcionamento de cada modo. É necessário estar conectado à internet, pois os links levam ao `README.md` do repositório no GitHub.
 * ✅**Melhoria no layout dos botões:** Os botões **RENOMEAR** e **RESETAR** agora aparecem lado a lado.
