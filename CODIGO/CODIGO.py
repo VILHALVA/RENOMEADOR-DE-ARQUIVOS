@@ -120,7 +120,7 @@ class RenomearArquivos:
         modo = self.var_modo.get()
         urls = {
             "GERAL": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#geral-nome-universal--numera%C3%A7%C3%A3o-sequencial",
-            "0": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#modo-0--adiciona-zeros",
+            "0": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#modo-0--adiciona-ou-remove-zeros",
             "UPPER": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#upper-nomes-em-mai%C3%BAsculas",
             "LOWER": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#lower-nomes-em-min%C3%BAsculas",
             "MISTO": "https://github.com/VILHALVA/RENOMEADOR-DE-ARQUIVOS?tab=readme-ov-file#misto-primeiras-letras-em-mai%C3%BAsculas"
